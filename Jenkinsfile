@@ -1,19 +1,13 @@
 pipeline {
-  agent any
-  stages {
-  stage('Stage 1') {
-      steps {
-        script {
-          echo 'Stage 1'
+    agent any
+    stages {
+        stage('build') {
+            steps {
+                bat ''' python --version
+                        python -m venv env    
+                '''
+                bat 'env/Scripts/activate'
+            }
         }
-      }
     }
-  stage('Stage 2') {
-      steps {
-        script {
-          echo 'Stage 2'
-        }
-      }
-    }
-  }
 }
